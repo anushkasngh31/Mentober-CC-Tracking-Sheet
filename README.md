@@ -1,34 +1,29 @@
 # Mentober-CC-Tracking-Sheet
-/* question link: https://www.codechef.com/problems/CVDRUN */
-#include <iostream>
-using namespace std;
-
-int main() {
-	// your code goes here
-int t; 
-cin>>t; 
-while(t--)
-{
-    int n,k,x,y,flag=0; 
-    cin>>n>>k>>x>>y; 
-    if(y>n)
-    cout<<"NO"<<endl; 
-    else
-    {
-        for(int i=0;i<n;i++)
-        {
-            if((x+k*i)%n== y)
-            {
-            cout<<"YES"<<endl;
-            flag= 1; 
-            break; 
-            }
+/* question link: https://leetcode.com/problems/reverse-words-in-a-string/ */
+class Solution {
+    public String reverseWords(String s) {
+         if(s.length()==0) return s; 
+        
+        int n= s.length();
+        int begin=0; 
+        String result= ""; 
+        
+        while(begin<n)
+        {   
+            String word=""; 
+            while(begin<n && s.charAt(begin)==' ')
+                begin++; 
+            if(begin>=n) break; 
+            int end= begin+1; 
+            while(end<n && s.charAt(end)!=' ')
+                end++; 
+        
+            word= s.substring(begin,end); 
+            if(result.length()==0) result= word; 
+            else
+            result= word + " " + result; 
+            begin= end+1; 
         }
-        if(!flag)
-        cout<<"NO"<<endl; 
+        return result; 
     }
-}
-	    
-	
-	return 0;
 }
